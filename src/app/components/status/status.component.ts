@@ -47,7 +47,6 @@ export class StatusComponent implements OnInit {
           this.auth.fetchExpenses(token)
           .then((expense_list) => {
             console.log(expense_list._body);
-            expense_list = expense_list._body;
           })
         }
       })
