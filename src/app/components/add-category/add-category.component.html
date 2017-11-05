@@ -1,6 +1,4 @@
-
-
- <app-sidebar-navigation></app-sidebar-navigation>
+<app-sidebar-navigation></app-sidebar-navigation>
  <div id="page-content-wrapper">  
    <div class="page-content inset">
      <h1 style="text-align:center">Add New Category</h1>
@@ -8,10 +6,9 @@
        <div *ngIf="logInFailed" class="alert alert-danger text-center" role="alert">
          {{message}}
      </div>
-       <form class="form"  (ngSubmit)="onLogin()" novalidate> 
-   
+       <form class="form"  (ngSubmit)="onAddCategory()" novalidate> 
            <div class="form__group">
-               <input type="text" class="form__input" id="" placeholder="Name Of Category"  name="category_name" required>
+               <input type="text" class="form__input" id="" placeholder="Name Of Category" [(ngModel)] = "category.name"  name="category_name" required>
            </div>
            
            <button class="btn" type="submit">Add Category</button>

@@ -6,3 +6,6 @@ export class Expense{
   constructor(category_id?:number,name?:string,money_spent?:string,is_recurrable?:boolean){}
 }
 
+export class Category{
+  constructor(name?:string){}
+}

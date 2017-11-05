@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { User,Expense } from '../models/user';
+import { User,Expense,Category } from '../models/user';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -59,6 +59,14 @@ export class AuthService {
   }
   graphData(token): Promise<any> {
     let url: string = `${this.BASE_URL}/user/dashboard`;
+    let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(url, {headers: headers}).toPromise();
+  }
+  addCategory(category:Category,token): Promise<any> {
+    let url: string = `${this.BASE_URL}/user/add-category`;
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
