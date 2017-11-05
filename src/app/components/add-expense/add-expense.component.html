@@ -6,24 +6,24 @@
       <div *ngIf="logInFailed" class="alert alert-danger text-center" role="alert">
         {{message}}
     </div>
-      <form class="form"  (ngSubmit)="onLogin()" novalidate> 
+      <form class="form"  (ngSubmit)="onaddExpense()" novalidate> 
         <div class="form__group">
-          <select class="form__input">
-            <option>Select Category</option>
-            <option *ngFor="let cat of categories" [value]="cat">
-              {{cat}}
+          <select class="form__input" [(ngModel)]="expense.category_id" [ngModelOptions]="{standalone: true}">
+            <option >Select Category</option>
+            <option *ngFor="let cat of categories" [value]="cat[0]"  name="category" >
+              {{cat[1]}}
             </option>
           </select>  
         </div>     
           <div class="form__group">
-              <input type="text" class="form__input" id="" placeholder="Name Of Expense"  name="name" required>
+              <input type="text" class="form__input" id="" placeholder="Name Of Expense"  [(ngModel)]="expense.email" name="name" required>
           </div>
           
           <div class="form__group">
-              <input type="text" class="form__input" id="" placeholder="Total Money Spent"  name="money_spent" required>
+              <input type="number" class="form__input" id="" placeholder="Total Money Spent" [(ngModel)]="expense.money_spent" name="money_spent" required>
           </div>
           <div class="form__group">
-             <input type="checkbox"  id="" placeholder="Is Recurrable"  name="is_recurrable" value="False" required>Is Recurrable
+             <input type="checkbox"  id="" placeholder="Is Recurrable"   value="False" [(ngModel)]="expense.is_recurrable" name="is_recurrable" required>Is Recurrable
           </div>
           <button class="btn" type="submit">Add Expense</button>
       </form>

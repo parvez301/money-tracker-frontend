@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CanActivate, Router } from '@angular/router';
+import { Expense } from '../../models/user';
+
 @Component({
   selector: 'app-add-expense',
   templateUrl: './add-expense.component.html',
@@ -8,6 +10,8 @@ import { CanActivate, Router } from '@angular/router';
 })
 export class AddExpenseComponent implements OnInit {
   categories : any
+  message : string;
+  expense:Expense = new Expense();
   constructor(private auth: AuthService,private router: Router) { }
 
   ngOnInit() : void{
@@ -16,6 +20,7 @@ export class AddExpenseComponent implements OnInit {
       this.auth.getExpenseCategories(token)
       .then((categoriesSet) => {
         this.categories = categoriesSet.json()
+        console.log(this.categories);
         /*categories._body.forEach(element => {
           console.log(element.name);
         });*/
@@ -24,6 +29,18 @@ export class AddExpenseComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+  onaddExpense(): void {
+    //console.log(token);
+    const token = localStorage.getItem('token');
+    this.auth.addExpense(this.expense,token)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
 }

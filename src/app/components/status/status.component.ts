@@ -43,10 +43,10 @@ export class StatusComponent implements OnInit {
         console.log(user.json());
         if (user.json().status === 'success') {
           this.isLoggedIn = true;
-          this.auth.fetchExpenses(token)
+          this.auth.graphData(token)
           .then((expense_list) => {
-            console.log(expense_list.json())
-            this.single = expense_list.json()
+            console.log(expense_list._body)
+            //this.single = expense_list._body
           })
         }
       })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { User } from '../models/user';
+import { User,Expense } from '../models/user';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -15,6 +15,14 @@ export class AuthService {
   register(user: User): Promise<any> {
     let url: string = `${this.BASE_URL}/register`;
     return this.http.post(url, user, {headers: this.headers}).toPromise();
+  }
+  addExpense(expense: Expense, token): Promise<any> {
+    let url: string = `${this.BASE_URL}/user/add-expense`;
+    let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(url, {headers: headers}).toPromise();
   }
   ensureAuthenticated(token): Promise<any> {
     let url: string = `${this.BASE_URL}/status`;
@@ -43,6 +51,14 @@ export class AuthService {
   }
   getExpenses(token): Promise<any> {
     let url: string = `${this.BASE_URL}/user/expenses`;
+    let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(url, {headers: headers}).toPromise();
+  }
+  graphData(token): Promise<any> {
+    let url: string = `${this.BASE_URL}/user/dashboard`;
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`

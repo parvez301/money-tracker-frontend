@@ -22,7 +22,6 @@ export class LoginComponent {
     .catch((err) => {
       console.log(err);
       this.logInFailed = true;
-      console.log(err);
       this.message = err.json().message
     });
   }
