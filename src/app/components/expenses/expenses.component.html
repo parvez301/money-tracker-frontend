@@ -1,2 +1,27 @@
 <app-sidebar-navigation></app-sidebar-navigation>
 
+<div id="page-content-wrapper">  
+        <div class="page-content inset">
+          <h1 style="text-align:center">Expense List</h1>
+            <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Money Spent</th>
+                        <th>Is Recurrable</th>
+                        <th>created_on</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let expense of expense_list">
+                      <tr>
+                            <td>{{ expense.name}}</td>
+                            <td>{{expense.category}}</td>
+                            <td>{{expense.money_spent}}</td>
+                            <td>{{expense.is_recurring}}</td>
+                            <td>{{expense.created_on}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+        </div>
+    </div>
