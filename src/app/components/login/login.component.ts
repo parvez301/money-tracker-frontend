@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
+
+@Component({
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent {
+  logInFailed = false;
+  message : string;
+  user: User = new User();
+  constructor(private router: Router, private auth: AuthService) {}
+  onLogin(): void {
+    this.auth.login(this.user)
+    .then((user) => {
+      localStorage.setItem('token', user.json().auth_token);
+      this.router.navigateByUrl('/dashboard');
+    })
+    .catch((err) => {
+      console.log(err);
+      this.logInFailed = true;
+      console.log(err);
+      this.message = err.json().message
+    });
+  }
+}

@@ -1,0 +1,26 @@
+<app-sidebar-navigation></app-sidebar-navigation>
+<div id="page-content-wrapper">  
+  <div class="page-content inset">
+    <h1 style="text-align:center">Add New Expense</h1>
+    <div class="user">
+      <div *ngIf="logInFailed" class="alert alert-danger text-center" role="alert">
+        {{message}}
+    </div>
+      <form class="form"  (ngSubmit)="onLogin()" novalidate> 
+        <div class="form__group">
+          <select></select>  
+        </div>     
+          <div class="form__group">
+              <input type="text" class="form__input" id="" placeholder="Name Of Expense" [(ngModel)]="user.name" name="name" required>
+          </div>
+          
+          <div class="form__group">
+              <input type="text" class="form__input" id="" placeholder="Total Money Spent" [(ngModel)]="user.money_spent" name="money_spent" required>
+          </div>
+          
+          <button class="btn" type="submit">Add Expense</button>
+      </form>
+      <br>
+    </div>
+ </div>
+ </div>

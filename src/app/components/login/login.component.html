@@ -1,0 +1,23 @@
+<div class="user">
+  <header class="user__header">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+      <h3 class="user__title">Welcome To Money Tracker App</h3>
+      <h5> Log In To Your Account</h5>
+  </header>
+  <div *ngIf="logInFailed" class="alert alert-danger text-center" role="alert">
+    {{message}}
+</div>
+  <form class="form"  (ngSubmit)="onLogin()" novalidate>      
+      <div class="form__group">
+          <input type="email" class="form__input" id="email" placeholder="enter email" [(ngModel)]="user.email" name="email" required>
+      </div>
+      
+      <div class="form__group">
+          <input type="password" class="form__input" id="password" placeholder="enter password" [(ngModel)]="user.password" name="password" required>
+      </div>
+      
+      <button class="btn" type="submit">Login</button>
+  </form>
+  <br>
+  <a style="text-align:center,color:black" routerLink="/register"><h5 >New Member? Register Here</h5></a>
+</div>
