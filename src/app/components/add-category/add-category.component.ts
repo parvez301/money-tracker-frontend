@@ -10,8 +10,14 @@ import { Category } from '../../models/user';
 })
 export class AddCategoryComponent implements OnInit {
   category : Category = new Category();
+ 
+  constructor(private auth: AuthService,private router: Router) { }
+
+  ngOnInit() {
+  }
   onAddCategory():void{
     const token = localStorage.getItem('token');
+    console.log(token);
     this.auth.addCategory(this.category,token)
     .then((response) => {
       console.log(response);
@@ -19,10 +25,5 @@ export class AddCategoryComponent implements OnInit {
     .catch((err) => {
       console.log(err);
     });
-  } 
-  constructor(private auth: AuthService,private router: Router) { }
-
-  ngOnInit() {
   }
-
 }

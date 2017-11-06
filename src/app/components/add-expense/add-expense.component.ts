@@ -34,6 +34,7 @@ export class AddExpenseComponent implements OnInit {
   onaddExpense(): void {
     //console.log(token);
     const token = localStorage.getItem('token');
+    console.log(token);
     this.auth.addExpense(this.expense,token)
     .then((response) => {
       console.log(response);

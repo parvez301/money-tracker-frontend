@@ -12,8 +12,10 @@ export class LoginComponent {
   logInFailed = false;
   message : string;
   user: User = new User();
+  loginButtontext:string='Login';
   constructor(private router: Router, private auth: AuthService) {}
   onLogin(): void {
+    this.loginButtontext = 'Logging In';
     this.auth.login(this.user)
     .then((user) => {
       localStorage.setItem('token', user.json().auth_token);
@@ -21,6 +23,7 @@ export class LoginComponent {
     })
     .catch((err) => {
       console.log(err);
+      this.loginButtontext = 'Login'
       this.logInFailed = true;
       this.message = err.json().message
     });
