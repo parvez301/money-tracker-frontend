@@ -12,7 +12,7 @@ import { StatusComponent } from './components/status/status.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
 import { SidebarNavigationComponent } from './components/sidebar-navigation/sidebar-navigation.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { AddExpenseComponent } from './components/add-expense/add-expense.component';
@@ -32,7 +32,7 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
     BrowserModule,
     HttpModule,
     FormsModule,
-    BrowserAnimationsModule,
+    //BrowserAnimationsModule,
     NgxChartsModule,
     RouterModule.forRoot([
       {
