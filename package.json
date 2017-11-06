@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "node app.js",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build "
   },
   "engines":{
     "node":"~6.10.1",
