@@ -2,7 +2,6 @@
   "name": "angular4-front-end",
   "version": "0.0.0",
   "license": "MIT",
-  "main" : "app.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "start": "node app.js",
     "postinstall": "ng build --aot -prod"
   },
   "engines":{
