@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL: string = 'https://dry-caverns-34971.herokuapp.com/auth';
+  private BASE_URL: string = 'http://localhost:5000/auth';
   private headers: Headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) {}
   login(user: User): Promise<any> {
@@ -17,13 +17,13 @@ export class AuthService {
     return this.http.post(url, user, {headers: this.headers}).toPromise();
   }
   addExpense(expense: Expense, token): Promise<any> {
-    
+    console.log(expense);
     let url: string = `${this.BASE_URL}/user/add-expense`;
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
-    return this.http.post(url, {headers: headers}).toPromise();
+    return this.http.post(url, expense,{headers: headers}).toPromise();
   }
   ensureAuthenticated(token): Promise<any> {
     let url: string = `${this.BASE_URL}/status`;
@@ -56,6 +56,7 @@ export class AuthService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
+    console.log(token);
     return this.http.get(url, {headers: headers}).toPromise();
   }
   graphData(token): Promise<any> {
@@ -68,13 +69,11 @@ export class AuthService {
   }
   addCategory(category:Category,token): Promise<any> {
     let url: string = `${this.BASE_URL}/user/add-category`;
-    let authorization_token : string = "'Bearer '"+token;
-    let headers:Headers = new Headers({
+    let headers: Headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': "'Bearer '" + token,
-      'Access-Control-Allow-Origin': '*',
-      })
+      Authorization: `Bearer ${token}`
+    });
     console.log(headers);
-    return this.http.post(url, {headers : headers}).toPromise();
+    return this.http.post(url, category,{headers : headers}).toPromise();
   }
 }

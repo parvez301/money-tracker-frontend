@@ -13,24 +13,6 @@ export class AddExpenseComponent implements OnInit {
   message : string;
   expense:Expense = new Expense();
   constructor(private auth: AuthService,private router: Router) { }
-
-  ngOnInit() : void{
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.auth.getExpenseCategories(token)
-      .then((categoriesSet) => {
-        this.categories = categoriesSet.json()
-        console.log(this.categories);
-        /*categories._body.forEach(element => {
-          console.log(element.name);
-        });*/
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  }
-
   onaddExpense(): void {
     //console.log(token);
     const token = localStorage.getItem('token');
@@ -43,5 +25,25 @@ export class AddExpenseComponent implements OnInit {
       console.log(err);
     });
   }
+  ngOnInit() : void{
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log(token);
+      this.auth.getExpenseCategories(token)
+      .then((categoriesSet) => {
+        this.categories = categoriesSet.json()
+        console.log(this.categories);
+        /*categories._body.forEach(element => {
+          console.log(element.name);
+        });*/
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+    
+  }
+
+
 
 }

@@ -16,14 +16,14 @@
           </select>  
         </div>     
           <div class="form__group">
-              <input type="text" class="form__input" id="" placeholder="Name Of Expense"  [(ngModel)]="expense.email" name="name" required>
+              <input type="text" class="form__input" id="" placeholder="Name Of Expense"  [(ngModel)]="expense.name" name="name" required>
           </div>
           
           <div class="form__group">
               <input type="number" class="form__input" id="" placeholder="Total Money Spent" [(ngModel)]="expense.money_spent" name="money_spent" required>
           </div>
           <div class="form__group">
-             <input type="checkbox"  id="" placeholder="Is Recurrable"   value="False" [(ngModel)]="expense.is_recurrable" name="is_recurrable" required>Is Recurrable
+             <input type="checkbox"  id="" placeholder="Is Recurrable"   value="False" [(ngModel)]="expense.is_recurring" name="is_recurring" required>Is Recurrable
           </div>
           <button class="btn" type="submit">Add Expense</button>
       </form>

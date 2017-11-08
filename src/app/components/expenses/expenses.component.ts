@@ -9,17 +9,15 @@ import { CanActivate, Router } from '@angular/router';
 export class ExpensesComponent implements OnInit {
   expense_list:any
   constructor(private auth: AuthService,private router: Router) { }
-
-  ngOnInit() {
+    ngOnInit() {
     const token = localStorage.getItem('token');
+    console.log(token);
     if (token) {
+      console.log(token);
       this.auth.getExpenses(token)
       .then((expenseSet) => {
         this.expense_list = expenseSet.json()
         console.log(this.expense_list);
-        /*categories._body.forEach(element => {
-          console.log(element.name);
-        });*/
       })
       .catch((err) => {
         console.log(err);

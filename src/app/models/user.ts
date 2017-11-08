@@ -3,7 +3,7 @@ export class User {
   }
 
 export class Expense{
-  constructor(category_id?:number,name?:string,money_spent?:string,is_recurrable?:boolean){}
+  constructor(category_id?:number,name?:string,money_spent?:string,is_recurring?:boolean){}
 }
 
 export class Category{
